@@ -123,19 +123,32 @@
         }//end showHome()
 
         
-        function showType()
-        {
+        function showType() {
             /*
-                loop through all creatures
-                
-                if creature is an animal, border color solid red
-                if creature is an insect, border color is dashed orange
+                Loop through all creatures
+
+                If the creature is an animal, set border color to solid red.
+                If the creature is an insect, set border color to dashed orange.
             */
-            alert("showType()");
-        }//end showType()
+
+            const myNodeList = document.querySelectorAll("div.creature");
+
+            for (let x = 0; x < myNodeList.length; x++) {
+                const myType = myNodeList[x].querySelector("img").dataset.creatureType; 
+
+                switch (myType) {
+                    case "animal":
+                        myNodeList[x].style.border = "2px solid red"; 
+                        break;
+                    case "insect":
+                        myNodeList[x].style.border = "2px dashed orange"; 
+                        break;
+                }
+            }
+        }
 
         function clearAll()
-        {
+        { 
             /*
                 loop through all creatures
                 
@@ -143,7 +156,15 @@
                 clear background color to white
                 
             */
-           // alert("clearAll()");
+            const myNodeList = document.querySelectorAll("div.creature");
+
+            for (let x = 0; x < myNodeList.length; x++){
+                myNodeList[x].style.backgroundColor = "white";
+                myNodeList[x].style.border = "1px solid black";
+
+        }
+            
+           
         }//end clearAll()
 
     </script>    
