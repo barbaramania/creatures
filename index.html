@@ -20,6 +20,11 @@
     
             }
 
+            /*div.creature{
+                background-color: yellow;
+                border: 2px solid red;
+            }*/
+
         </style>
     </head>   
     <body>
@@ -44,38 +49,38 @@
         </ul>
     </div>
     <div class="creature">    
-        <img src="images/monkey.png" alt="monkey">
+        <img src="images/monkey.png" data-home="land" data-creature-type ="animal" alt="monkey">
         <h3>Monkey</h3>
         <p>Monkeys are cute, but don't try to cuddle them.</p>
     </div>
         
    <div class="creature">    
-        <img src="images/hummingbird.png" alt="hummingbird">
+        <img src="images/hummingbird.png" data-home="air" data-creature-type ="insect" alt="hummingbird">
         <h3>Hummingbird</h3>
         <p>Hummingbirds are cute, but don't get in the way of their food.</p>
     </div>
         
     <div class="creature">    
-        <img src="images/spider.png" alt="spider">
+        <img src="images/spider.png" data-home="land" data-creature-type ="animal" alt="spider">
         <h3>Spiders</h3>
     <p>Spiders are not cute, in fact they creep me out.</p>
     </div>
         
    <div class="creature">    
-        <img src="images/crow.png" alt="crow">
+        <img src="images/crow.png" data-home="air" data-creature-type ="animal" alt="crow">
         <h3>Crow</h3>
         <p>Crows are not cute, and don't feed them your french fries.</p>
     </div> 
         
         
     <div class="creature">    
-        <img src="images/fish.png" alt="fish">
+        <img src="images/fish.png" data-home="water" data-creature-type ="animal" alt="fish">
         <h3>Fish</h3>
         <p>Fish are not cute, but they taste good!</p>
     </div>
         
     <div class="creature">    
-        <img src="images/stinkbug.png" alt="stinkbug">
+        <img src="images/stinkbug.png" data-home="land" data-creature-type ="insect" alt="stinkbug">
         <h3>Stink Bug</h3>
         <p>Stinkbugs are not cool!  Don't touch them!</p>
     </div>    
@@ -88,10 +93,9 @@
      
     <script>
 
-        
-        function showHome()
-        {
-            /*
+
+        function showHome() {
+             /*
                 loop through all creatures
                 
                 if creature lives on land, background color green
@@ -99,9 +103,25 @@
                 if creature lives in air, yellow
                 
                 */
-               alert("showHome()");
-            
+
+            const myNodeList = document.querySelectorAll("div.creature");
+
+            for (let x = 0; x < myNodeList.length; x++) {
+                const myHome = myNodeList[x].querySelector("img").dataset.home; // Corrected line
+                switch (myHome) {
+                    case "land":
+                        myNodeList[x].style.backgroundColor = "green";
+                        break;
+                    case "water":
+                        myNodeList[x].style.backgroundColor = "blue";
+                        break;
+                    case "air":
+                        myNodeList[x].style.backgroundColor = "yellow";
+                        break;
+                }
+            }
         }//end showHome()
+
         
         function showType()
         {
@@ -123,7 +143,7 @@
                 clear background color to white
                 
             */
-            alert("clearAll()");
+           // alert("clearAll()");
         }//end clearAll()
 
     </script>    
